@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="float-left">
+      <h2>Files List</h2>
+    </div>
+    <div class="float-right">
+      <button class="btn btn-info" [routerLink]="['/upload-file']">Upload File</button>
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S. No.</th>
+          <th>File Name</th>
+          <th>File Type</th>
+          <th>File Size (MB)</th>
+          <th>Upload Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of files; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{file.originalname}}</td>
+          <td>{{file.extension}}</td>
+          <td>{{file.size | number}}</td>
+          <td>{{file.createdAt | date:'mediumDate'}}</td>
+          <td><a href="{{file.downloadLink}}" download="{{file.originalname}}">Download
+            </a>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteFile(file._id,i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

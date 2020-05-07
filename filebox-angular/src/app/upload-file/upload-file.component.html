@@ -1,0 +1,8 @@
+<div class="container">
+  <form #uploadForm="ngForm" class="form-group">
+    <label for="file">Choose File</label>
+    <input type="file" name="file" (change)="fileChangeEvent($event)" class="form-control-file">
+  </form>
+  <button class="btn btn-primary" *ngIf="!uploading" (click)="upload()">Upload</button>
+  <button class="btn btn-info" *ngIf="uploading">Uploading</button>
+</div>
